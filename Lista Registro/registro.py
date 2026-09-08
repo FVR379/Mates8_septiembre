@@ -1,0 +1,26 @@
+from mysql_conecction import connectToMySQL
+
+class Registro:
+   def __init__( self , data ):
+       self.id = data['id']
+       self.nombre = data['nombre']
+       self.apellido = data['apellido']
+       self.edad = data['edad']
+       self.created_at = data['created_at']
+       self.updated_at = data['updated_at']
+
+   @classmethod
+   def save(cls, data):
+       query = "INSERT INTO registros (nombre, apellido, edad, created_at, updated_at) VALUES (%(nombre)s, %(apellido)s, %(edad)s, NOW(), NOW());"
+       return connectToMySQL('Registro').query_db(query, data)
+       
+   @classmethod
+   def get_all(cls):
+       query = "SELECT * FROM registros;"
+
+       resultados = connectToMySQL('Registro').query_db(query)
+       registros = []
+
+       for registro in resultados:
+           registros.append(cls(registro))
+       return registros
