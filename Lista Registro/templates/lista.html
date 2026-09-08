@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="../static/style.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
         <title>Lista</title>
     </head>
 
@@ -15,7 +15,14 @@
                     <th>Apellido</th>
                     <th>Edad</th>
                 </tr>
+                {% for registro in registros %}
+                <tr>
+                    <td>{{ registro.nombre }}</td>
+                    <td>{{ registro.apellido }}</td>
+                    <td>{{ registro.edad }}</td>
+                </tr>
+                {% endfor %}
             </table>
         </div>
-
+</body>
 </html>

@@ -1,6 +1,15 @@
 table{
     border:black 1px solid;
     border-radius: 2px;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th,
+td {
+    border-bottom: black 1px solid;
+    padding: 8px;
+    text-align: left;
 }
 
 .registro{
